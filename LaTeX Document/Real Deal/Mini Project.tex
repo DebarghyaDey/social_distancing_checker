@@ -1,0 +1,674 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper,hmargin={3cm,2.5cm},vmargin={2.5cm,2.5cm}]{geometry}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\rhead{Object Recognition to keep Social Distancing Norms in check}
+\lfoot{Department of Computer Science \& Technology}
+
+\usepackage{lipsum}
+
+\usepackage{multicol}
+
+\usepackage{ragged2e}
+
+\usepackage{xcolor}
+
+\usepackage{enumitem}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{listings}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+    backgroundcolor=\color{white},      % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+    language=Python,                    % the language of the code
+    basicstyle=\footnotesize\ttfamily,  % the size of the fonts that are used for the code
+    breakatwhitespace=false,            % sets if automatic breaks should only happen at whitespace
+    breaklines=true,                    % sets automatic line breaking
+    captionpos=b,                       % sets the caption-position to bottom
+    commentstyle=\color{mygreen},       % comment style
+    deletekeywords={...},               % if you want to delete keywords from the given language
+    escapeinside={\%*}{*)},             % if you want to add LaTeX within your code
+    extendedchars=true,                 % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+    firstnumber=1,                      % start line enumeration with line 1
+    numbers=left,                       % where to put the line-numbers; possible values are (none, left, right)
+    numberstyle=\tiny\color{mygray},    % the style that is used for the line-numbers
+    numbersep=7pt,                      % how far the line-numbers are from the code
+	frame=single,                       % code snippet frame, t-> top, b->bottom, l->left, r->right, single-> all around
+	tabsize=4,                          % tab = (tabsize) * space
+    columns=flexible,                   % two options, fixed or flexible
+    keepspaces=true,                    % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+    morekeywords={*,...},               % if you want to add more keywords to the set
+    rulecolor=\color{black},            % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                   % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+    showstringspaces=false,             % underline spaces within strings only
+    showtabs=false,                     % show tabs within strings adding particular underscores
+    stepnumber=1,                       % the step between two line-numbers. If it's 1, each line will be numbered
+    stringstyle=\color{mymauve},        % string literal style
+    title=\small\lstname,                     % show the filename of files included with \lstinputlisting; also try caption instead of title
+	% keepspaces,
+	keywordstyle=\color{blue}           % keyword style    
+}
+
+\usepackage{hyperref}
+
+\usepackage[nottoc, numbib]{tocbibind}
+
+\begin{document}
+\begin{titlepage}
+    \begin{tikzpicture}[overlay,remember picture]
+        \draw[line width=4pt]
+        ($ (current page.north west) + (1cm,-1cm) $)
+        rectangle
+        ($ (current page.south east) + (-1cm,1cm) $);
+        \draw[line width=1.5pt]
+        ($ (current page.north west) + (1.2cm,-1.2cm) $)
+        rectangle
+        ($ (current page.south east) + (-1.2cm,1.2cm) $);
+    \end{tikzpicture}
+
+    \begin{center}
+
+        \textup{\large  \textbf{INDIAN INSTITUTE OF ENGINEERING}\\\textbf{SCIENCE AND TECHNOLOGY, SHIBPUR}}\\ Howrah, West Bengal, India - 711103\\[0.5cm]\textbf{\large DEPARTMENT OF COMPUTER SCIENCE}\\\textbf{\large AND TECHNOLOGY}
+
+        %---------------------------------Figure------------------------------
+        \begin{center}
+            \begin{figure}[h]   %h means here other options t , b, p, etc.
+                \centering
+                \includegraphics[width=0.3\linewidth]{Pictures/IIESTS Logo.png}
+            \end{figure}
+        \end{center}
+
+        %----------------------------
+
+        \textup{\large A MINI-PROJECT REPORT SUBMITTED IN PARTIAL FULFILLMENT OF THE REQUIREMENTS\\[0.4cm]ON}\\[0.4cm]
+
+        \begin{LARGE}
+            {\textbf {"OBJECT RECOGNITION TO KEEP\\[0.1cm]SOCIAL DISTANCING NORMS IN CHECK"}}
+        \end{LARGE}\\[1cm]
+
+        \textit{SUBMITTED BY}\\[0.3cm]
+        \begin{large}
+            \textbf{Abhinaba Chowdhury (510519007)}\\[0.1cm]
+            \textbf{Abhiroop Mukherjee (510510109)}\\[0.1cm]
+            \textbf{Debarghya Dey (510519087)}\\[0.1cm]
+            \textbf{Jyotiprakash Roy (510519016)}\\[0.1cm]
+            \textbf{Shrutanten (510519048)}\\[1cm]
+        \end{large}
+
+        \textit{UNDER THE GUIDANCE OF}\\[0.5cm]
+        \begin{large}
+            \textbf{DR. SAMIT BISWAS}\\[0.3cm]
+        \end{large}
+
+        \textbf{(Academic Year: 2020-2021)}
+    \end{center}
+\end{titlepage}
+%================begin of certificate page======================
+
+\begin{titlepage}
+    \begin{tikzpicture}[overlay,remember picture]
+        \draw[line width=4pt]
+        ($ (current page.north west) + (1cm,-1cm) $)
+        rectangle
+        ($ (current page.south east) + (-1cm,1cm) $);
+        \draw[line width=1.5pt]
+        ($ (current page.north west) + (1.2cm,-1.2cm) $)
+        rectangle
+        ($ (current page.south east) + (-1.2cm,1.2cm) $);
+    \end{tikzpicture}
+
+    \begin{center}
+        \textup{\large  \textbf{INDIAN INSTITUTE OF ENGINEERING}\\\textbf{SCIENCE AND TECHNOLOGY, SHIBPUR}}\\ Howrah, West Bengal, India - 711103\\[0.5cm]\textbf{\large DEPARTMENT OF COMPUTER SCIENCE}\\\textbf{\large AND TECHNOLOGY}
+
+        %---------------------------------Figure------------------------------
+        \begin{center}
+            \begin{figure}[h]   %h means here other options t , b, p, etc.
+                \centering
+                \includegraphics[width=0.3\linewidth]{Pictures/IIESTS Logo.png}
+            \end{figure}
+        \end{center}
+
+        %----------------------------
+
+
+        \begin{LARGE}
+            \textbf{\textit {Certificate}}
+        \end{LARGE}\\[1.2cm]
+    \end{center}
+
+    It is certified hereby that this report, titled \textit{”Object Recognition to keep Social Distancing Norms in check”}, and all the attached
+    documents herewith are authentic records of Abhinaba Chowdhury (510519007),\\Abhiroop Mukherjee (510510109), Debarghya Dey (510519087),
+    Jyotiprakash Roy \\(510519016), and Shrutanten (510519048) from the Prestigious Department of \\Computer Science And Technology
+    of the Distinguished and Respected IIEST Shibpur under my guidance.
+
+    The works of these students are satisfies all the requirements for which it is submitted.
+    To the extent of my knowledge, it has not been submitted to any different institutions for
+    the awards of degree/diploma.
+
+    \vspace{5cm}
+    \begin{multicols}{2}
+        \begin{center}
+            \textbf{Dr. Samit Biswas\\Asst. Professor}\hspace{5cm}
+        \end{center}
+        \begin{center}
+            \textbf{Dr. Sekhar Mandal\\Head Of Department}
+        \end{center}
+        \vspace{0.5cm}
+    \end{multicols}
+    \vfill
+\end{titlepage}
+%================end of title page======================
+
+%----------------------ACKNOWLEDGEMENT---------------------------
+\pagebreak
+\newpage
+
+\begin{titlepage}
+    \begin{center}
+        {\Large{\bf{\textit{ACKNOWLEDGEMENT}}\\[2cm]}}
+    \end{center}
+
+
+    \paragraph{\normalfont\textit{\indent We, as the students of IIEST, consider ourselves honoured to be working with Dr. Samit Biswas.
+            The success of this project would not have been possible without his useful insights,
+            appropriate guidance and necessary criticism.}}
+    \paragraph{\normalfont\textit{\indent We would pass our token of token of gratitude to the Department of Computer Science And Technoogy as well for providing
+            us with the opportunity to be able to tackle real world problems while improving
+            our problem solving ability and thinking capacity by organising this project. We all have
+            learnt quite a handful of new skills and are eager to use them henceforth as well.}}
+
+    \begin{flushright}
+	   \vspace{3cm}
+        \textit{Abhinaba Chowdhury (510519007)\\
+            Abhiroop Mukherjee (510510109)\\
+            Debarghya Dey (510519087)\\
+            Jyotiprakash Roy (510519016)\\
+            Shrutanten (510519048)}
+
+    \end{flushright}
+\end{titlepage}
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+\newpage
+\setcounter{tocdepth}{2} % + subsections
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+%%%%%%%%% MAIN TEXT STARTS HERE %%%%%%%%%%
+\section{INTRODUCTION}
+\subsection{Motivation}
+	\begin{itemize}
+		\item Coronaviruses are a group of related RNA viruses that cause diseases in mammals
+			and birds. In humans and birds, they cause respiratory tract infections that can
+			range from mild to lethal. Mild illnesses in humans include some cases of the
+			common cold (which is also caused by other viruses, predominantly rhinoviruses),
+			while more lethal varieties can cause SARS, MERS, and COVID-19.
+
+		\item With the increase in the spread of the dangerous and highly contagious \textbf{Novel Coronavirus}
+			and the underlying disease caused by it, \textbf{COVID-19},
+			it is a requirement now more than ever to follow the social distancing
+			norms set in place by the scientists and researchers.
+
+		\item But as we all know, India is a country with a not-so-small population,
+			so it is pretty understandable and obvious that the law enforcement will
+			not be able to actually enforce it on every single person. Therefore,
+			new means of automata in place of actual individuals is a no brainier.
+
+		\item \textbf{That is where we come in.}
+	\end{itemize}
+
+\subsection{The Idea Behind The Project}
+The idea behind the working of this software was simple. The software just needed
+to be able to look at a live feed (or recorded footage) of a camera and know
+which of the people present in the footage are actually following the social
+distancing norms and which of them are not, and mark either one appropriately.
+That is where our journey to build a social distance checker started.
+
+\pagebreak
+
+\section{KNOWLEDGE REFINEMENT}
+
+Before we settled on the topic of object detection and started building this project, we got some practice, which was necessary since we were going to dip our toes in image processing.
+
+\begin{itemize}
+    \item We made histograms for grey-level images. This was done using both the OpenCV's \textcolor{brown}{\texttt{ravel()}} function and our own implementation of it, called \textcolor{brown}{\texttt{compute\_histogram()}}.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{\linewidth}
+            \centering
+            \includegraphics[width=0.3\linewidth]{Pictures/histogram/greyscale.png}
+            \caption{Greyscale \href{https://www.publicdomainpictures.net/en/view-image.php?image=5675&amp;picture=flowers-6}{Image}}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{Pictures/histogram/compute_histogram.png}
+            \caption{histogram by \textcolor{brown}{\texttt{compute\_histogram()}}}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{Pictures/histogram/inbuilt commands.png}
+            \caption{histogram by in-built \textcolor{brown}{\texttt{ravel()}}}
+        \end{subfigure}
+        \caption{Histogram of Greyscale Images}
+        \label{greyscaleHist}
+    \end{figure}
+
+    \item Once that was over, we moved onto some Image Enhancement skills. Here we implemented noise reduction functions using mean, mode and median filters.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.3\linewidth}
+            \includegraphics[width=\linewidth]{Pictures/histogram equalization/5.png}
+            \caption{Original Image}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\linewidth}
+            \includegraphics[width=\linewidth]{Pictures/histogram equalization/image_edited.png}
+            \caption{Edited Image}
+        \end{subfigure}
+        \caption{Contrast Enhancement using Histogram Equalization}
+        \label{fig:Histogram Equalization}
+    \end{figure}
+
+    \pagebreak
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{Pictures/mean, median, mode filter/1.png}
+            \caption{Original Picture}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{Pictures/mean, median, mode filter/mean.png}
+            \caption{Mean Filter}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{Pictures/mean, median, mode filter/median.png}
+            \caption{Median Filter}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{Pictures/mean, median, mode filter/mode.png}
+            \caption{Mode Filter}
+        \end{subfigure}
+        \caption{Mean, Median, and Mode Filter}
+        \label{fig:Mean, Median, Mode Filter}
+    \end{figure}
+
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{Pictures/Salt And Pepper/4.png}
+            \caption{Original Photo}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{Pictures/Salt And Pepper/open_source_algo.png}
+            \caption{Edited Photo}
+        \end{subfigure}
+        \caption{Salt And Pepper Noise Removal}
+        \label{fig:Salt And Pepper}
+    \end{figure}
+
+    \pagebreak
+
+    \item Then we implemented Otsu's Thresholding Algorithm \cite{4310076} using minimization of \textit{within class variance approach}. 
+
+    \lstinputlisting[caption=Our Implementation Of Otsu's Thresholding Algorithm, label=lst:Otsu Algo]{python scripts/otsu_thresholding.py}
+    
+\end{itemize}
+
+\pagebreak
+
+\section{PREREQUISITES}
+
+\subsection{Outdoor Requirements}
+It is important to mention here that this is not a portable software that can be fed any footage and just be expected to work. There need to be some
+calibration measures taken to actually get this software working:
+
+\begin{itemize}
+    \item Actually knowing the local social distancing norms
+          \begin{itemize}
+              \item The minimum distance set for social distancing by the local government
+          \end{itemize}
+
+    \item Finding a good position for the camera
+          \begin{itemize}
+              \item The footage needs to be taken from a high enough place
+          \end{itemize}
+
+    \item Knowing the required distance in pixels
+          \begin{itemize}
+              \item This will depend on the position and angle of the camera's view
+          \end{itemize}
+\end{itemize}
+
+\subsection{Hardware and Software Requirements}
+The tools used to build this software are platform independent. However, there are a few requirements needed to be fulfilled to get the program
+working. These are:
+
+\begin{itemize}
+    \item Software Requirements
+          \begin{itemize}
+              \item Python - 3.5 or above
+              \item OpenCV-Python - version 2 or above
+              \item YOLOv3 Configuration and Network Weights
+              \item Numpy
+          \end{itemize}
+
+    \item Hardware Requirements
+          \begin{itemize}
+              \item A CUDA enabled GPU is optional yet recommended to get the best performance.
+              \item If such a GPU is not being used, the CPU needs to be good enough.
+          \end{itemize}
+\end{itemize}
+\pagebreak
+
+\section{THE PROJECT}
+\subsection{Software Used}
+The softwares used to build this \textit{checker} are:
+
+\subsubsection{An Integrated Development Environment (IDE)}
+An Integrated Development Environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software
+development. An IDE normally consists of at least a source code editor, build automation tools and a debugger. Some IDEs contain the necessary compiler,
+interpreter, or both; others, do not.
+
+We have used PyCharm as our IDE, as it was easy to set up and write code in.
+
+\href{https://www.jetbrains.com/pycharm/}{PyCharm} is an integrated development environment (IDE) used in computer programming, specifically for the Python language. It is developed by the Czech company JetBrains. It provides code analysis, a graphical debugger, an integrated unit tester, integration with version control systems (VCSes), and supports web development with Django as well as data science with Anaconda.
+
+\subsubsection{Python}
+\href{https://www.python.org/}{Python} is an interpreted, high-level and general-purpose programming language.
+Python's design philosophy emphasizes code readability with its notable use of significant whitespace. Its language constructs and object-oriented approach aim
+to help programmers write clear, logical code for small and large-scale projects.
+
+\paragraph{Why did we choose Python?}
+\begin{enumerate}
+    \item Python has an upper hand when it comes to software based on image recognition and object detection. Since it is the main
+          objective of the project, choosing python was a given.Python has an upper hand when it comes to software based on
+          image recognition and object detection. Since it is the main objective of the project, choosing python was a given.
+    \item Python is unbeaten when it comes to Machine Learning. Python has support for myriad machine learning libraries, such as OpenCV, the
+          one being used here.
+    \item Python is comparatively easier to understand and learn. The syntax is clear and simple to read and write.
+    \item And just our overall experience of using python for years.
+\end{enumerate}
+
+\subsubsection{Google Colab}
+After working on the project for quite some time, we realised that we did not have enough hardware resources at out disposal to actually make the
+\textit{checker} work smoothly. So we decided on shifting to Google Colab. \href{https://colab.research.google.com/notebooks/intro.ipynb}{Google Colab} is an online iPython development environment similar to \href{https://jupyter.org/}{Jupyter Notebook}. It uses CUDA acceleration to speed up processes, so we
+switched to it rather than continuing development locally.
+
+\subsubsection{\LaTeX}
+\LaTeX\ was used to write this report. \LaTeX\ is a software system for document preparation. When writing, the writer uses plain text as opposed to the formatted
+text found in "What You See Is What You Get" word processors like Microsoft Word or LibreOffice Writer.
+\pagebreak
+
+\subsection{The Program}
+
+\subsubsection{Outline}
+The blueprint of this \textit{checker} that we thought of initially:
+
+\begin{enumerate}
+    \item Video Input
+          \begin{itemize}[label=$-$]
+              \item Need some way to handle video input coming through the camera feed
+          \end{itemize}
+
+    \item Processing
+          \begin{itemize}[label=$-$]
+              \item The input needs to be processed somehow
+          \end{itemize}
+
+    \item Detecting people
+          \begin{itemize}[label=$-$]
+              \item Need to identify people in the video feed
+          \end{itemize}
+
+    \item Measuring distance between each couple
+          \begin{itemize}[label=$-$]
+              \item Need to calculate the distance between every two persons
+          \end{itemize}
+
+    \item Mark the violations
+          \begin{itemize}[label=$-$]
+              \item Need to mark the ones that violate social distancing norms
+          \end{itemize}
+\end{enumerate}
+
+\subsubsection{Proceedings}
+
+How we proceeded with the outlines of the blueprint:
+
+\begin{enumerate}
+    \item Video Input
+          \begin{itemize}[label={}]
+              \item This was easier than we expected it to be. We just had to get our hands
+                    on some recorded footage of somewhat populated areas. We refrained from using live
+                    footage because:
+                    \begin{itemize}
+                        \item It is tough to get our hands on the light footage of a security camera or the equivalent.
+                        \item If the checker worked on recorded footage, it would work on live footage as well.
+                    \end{itemize}
+
+              \item The videos we ended up choosing:
+                    \begin{figure}[h!]
+                        \centering
+                        \begin{subfigure}[b]{0.4\linewidth}
+                            \includegraphics[width=\linewidth]{Pictures/pedestrian.jpg}
+                            \caption{Pedestrian Video}
+                        \end{subfigure}
+                        \begin{subfigure}[b]{0.4\linewidth}
+                            \includegraphics[width=\linewidth]{Pictures/shibuya.png}
+                            \caption{Shibuya Video}
+                        \end{subfigure}
+                        \caption{Still Pictures from Sample Videos}
+                        \label{fig:stills}
+                    \end{figure}
+          \end{itemize}
+          \pagebreak
+    \item Processing
+          \begin{itemize}[label={}]
+              \item We used the \href{https://opencv.org/}{OpenCV} library for our video/image processing. It is a really handy library that can be used for image processing, object detection and many other purposes.
+                    \lstinputlisting[caption=A sample code to count no. of frames in a video, label=lst:VideoFrames]{python scripts/total_frames.py}
+          \end{itemize}
+
+    \item Detecting People
+          \begin{itemize}
+              \item For this we decided to go with the You Only Look Once (YOLO) algorithm for object detection. The algorithm itself is discussed a bit later in the report.
+              \item We did not train the object detection neural network model ourselves. We used the prebuilt model, trained by the \href{https://pjreddie.com/darknet/yolo/}{Darknet} team because of time constraints.
+			\item The script that we wrote for our implementation of the YOLO algorithm:
+              \lstinputlisting[caption=Our implementation of object (people) detection using YOLO. label=lst:YOLO]{python scripts/yolo_detection.py}
+          \end{itemize}
+
+    \item Measuring distance between each couple
+          \begin{itemize}
+              \item This was undeniably the toughest part of the project and took the longest time. First we decided to go with measuring the Euclidean distance between the centroids of every two detections. But that may not work in every condition since it depends on the placement of camera and the viewing angle from the ground and the angle from the perpendicular to the ground.
+              \item A conversion of the 3-dimensional footage being fed to the algorithm to 2-dimensions was more than necessary to get the top view of every frame to avoid the \textit{viewing angle problem}. The \textit{viewing angle problem} can be defined as the enigma that arises while trying to measure distances without knowing the angle between the object's line of sight and the ground.
+              \pagebreak
+              \item Enter \textbf{Bird's Eye View (BEV)}. This is what we call the top view of every frame. This was made possible by OpenCV's \textcolor{brown}{\texttt{getPerspectiveTransform()}} and \textcolor{brown}{\texttt{warpPerspective()}} functions.
+                    \lstinputlisting[caption=Function Bird's Eye Perspective Transformation Matrix, label=lst:BirdsEyePerspective]{python scripts/birds_eye_perspective.py}
+              \item This piece of code essentially calculates what is called a \textit{transformation matrix}\cite{kriegman2007homography} for the supplied image (frame) which can then be used to get the centroids of the points as seen from a vertical position directly above the center of the rectangle passed to the function.
+                    \lstinputlisting[caption=Function which converts coordinates to its bird's view coordinates, label=lst:birdsEyeAllign]{python scripts/birds_eye_allignment.py}
+              \item We used these functions to get a two dimensional view of every frame and calculate distance between every pair of detections (people).
+          \end{itemize}
+
+    \item Mark the violations
+          \begin{itemize}[label={}]
+              \item This was again a fairly easy step. We just needed the coordinates of the people in the \textit{violation zone} and make their detection rectangle red as opposed to green.
+		\end{itemize}
+	\item The final result
+		\begin{itemize}[label={}]
+			\item The end result of days of hard work and patience was the following program:
+    			\lstinputlisting[caption=Our implementation to process the input video, label=lst:VideoDetection]{python scripts/video_detection.py}
+         		\begin{figure}[h!]
+            		 \centering
+             		\includegraphics[width=\linewidth]{Pictures/sample output0.png}
+             		\caption{A Still from output video}
+             		\label{fig:OutputVid}
+      	   \end{figure}
+		\end{itemize}
+          
+\end{enumerate}
+\pagebreak
+\subsection{The YOLO Algorithm}
+
+\subsubsection{What is the YOLO Algorithm?}
+
+\begin{itemize}
+    \item \textbf{YOLO (“You Only Look Once”)}\cite{redmon2016look}\cite{redmon2018yolov3} is an effective real-time \textbf{object recognition} algorithm, first described in the seminal 2015 paper by Joseph Redmon et al.
+    \item \textbf{Image Classification} done by YOLO algorithm aims at assigning an image to one of a number of different categories (e.g. car, dog, cat, human, etc.), essentially answering the question “What is in this picture?”. One image has only one category assigned to it.
+    \item \textbf{Object Localization} then allows us to locate our object in the image, so our question changes to “Where is it?”.
+    \item \textbf{Object Detection} provides the tools for doing just that –  finding all the objects in an image and drawing the so-called bounding boxes around them.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.9\linewidth]{Pictures/Detected-with-YOLO--Schreibtisch-mit-Objekten.jpg}
+        \caption{\href{https://en.wikipedia.org/wiki/Object_detection}{Sample output} of YOLOv3}
+        \label{fig:YOLOv3Sample}
+    \end{figure}
+\end{itemize}
+
+\subsubsection{What type of \textit{Object Detection Algorithm} is YOLO?}
+There are a few different algorithms for object detection and they can be split into two groups:
+\begin{enumerate}
+    \item \textbf{Algorithms based on Classification}
+          \begin{itemize}[label={}]
+              \item They are implemented in two stages. First, they select regions of interest in an image. Second, they classify these regions using convolutional neural networks. This solution can be slow because we have to run predictions for every selected region. A widely known example of this type of algorithm is the Region-based convolutional neural network (RCNN) and its cousins Fast-RCNN, Faster-RCNN and the latest addition to the family: Mask-RCNN. Another example is RetinaNet.
+          \end{itemize}
+
+    \item \textbf{Algorithms based on Regression}
+          \begin{itemize}[label={}]
+              \item Instead of selecting interesting parts of an image, these predict classes and bounding boxes for the whole image in one run of the algorithm. The two best known examples from this group are the \textbf{YOLO \textit{(it stands here)}} family algorithms and SSD (Single Shot Multibox Detector). They are commonly used for real-time object detection as, in general, they trade a bit of accuracy for large improvements in speed.
+          \end{itemize}
+\end{enumerate}
+
+\subsubsection{How does YOLO work?\cite{appsilon_2020}}
+To understand the YOLO algorithm, it is necessary to establish what is actually being predicted. Ultimately, we aim to predict a class of an object and the bounding box specifying object location. Each bounding box can be described using four descriptors:
+
+\begin{enumerate}
+    \item Center of the bounding box $(b_x,b_y)$
+    \item Width of the bounding box $(b_w)$
+    \item Height of the bounding box $(b_h)$
+    \item Value corresponding to the class of an object (c=car,person,traffic lights etc)
+    \item The probability (confidence value) that there is an object bounding the box $(p_c)$
+\end{enumerate}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Pictures/yoloWorks1.png}
+    \caption{Descriptions of a Bounding Box}
+    \label{fig:descriptionOfBBox}
+\end{figure}
+
+Then, the image is split into cells, typically using a 19×19 grid. Each cell is responsible for predicting 5 bounding boxes (in case there are multiple objects in this cell). Therefore, we arrive at a large number of 1805 bounding boxes for one image.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Pictures/yoloWorks2.png}
+    \caption{Cell Structure of an Image}
+    \label{fig:StructImg}
+\end{figure}
+
+Most of these cells and bounding boxes will not contain an object. Therefore, the value $p_c$ is predicted, which serves to remove boxes with low object probability and bounding boxes with the highest shared area in a process called \textbf{non-maxima suppression}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Pictures/yoloWorks3.png}
+    \caption{Non-Maxima Suppression}
+    \label{fig:NMS}
+\end{figure}
+\pagebreak
+\subsection{Darknet implementation of YOLO}
+There are a few different implementations of the YOLO algorithm on the web. Darknet is one such open source neural network framework. Darknet was written in the C Language and CUDA technology, which makes it really fast and provides for making computations on a GPU, which is essential for real-time predictions.
+
+The Darknet YOLO model that we used here is pre-trained on the COCO (Common Objects in Context) dataset. It can be downloaded \href{https://pjreddie.com/darknet/yolo/}{here}.
+\newpage
+
+\section{SHORTCOMINGS}
+
+Like every other piece of software, this \textit{checker} is not perfect. It has its own limitations and shortcomings.
+
+\begin{enumerate}
+    \item \textbf{The camera that will record the feed needs to be placed at a position high enough} so that the \textit{viewing angle problem} can be avoided. Placing the camera at a horizontal level will not allow the checker to work correctly. For the lowest error margin, the camera needs to be placed perpendicular to the ground, which is not always possible.
+    \item \textbf{Enormous amount of computing power will be needed to make the algorithm work for a live footage}. Even for recorded footage, we were not able to get more than 3-5 frames per second with a decent GPU. This is due to the object detection algorithm taking time in detecting objects. It is not practical to use this \textit{checker} on a live feed.
+    \item \textbf{The minimum social distance needs to be known in pixels beforehand}. This is a lot more difficult than it sounds since a small change in viewing angle can bring a large change in the distance measurements. Plus it is not easy to calculate any distance in pixels. We ourselves have taken arbitrary values here using trial and error to make things work as they should.
+    \item \textbf{The algorithm will completely fail in overly populated areas}. This is due to how YOLO works. It sacrifices accuracy for speed, therefore it really struggles with multiple objects in a single \textit{cell}.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\linewidth]{Pictures/shibuya_bad_frame.png}
+        \caption{An example of YOLO object detection failing.}{The big red box is unintended output.}
+        \label{fig:shibuyaFail}
+    \end{figure}
+\end{enumerate}
+
+\subsection{Solutions}
+
+A few of these limitations can be solved by adopting the following means:
+
+\begin{enumerate}
+    \item Recording via a drone can completely eliminate the \textit{viewing angle problem}, since a drone can be stabilized at exactly 90 degrees to the ground. Indoors, a camera at the center of the ceiling would work wonders.
+    \item The \textit{checker} can work in densely populated areas as well if we use RCNN or any classification based algorithm. But that will further slow down the \textit{checker} since RCNN is a much slower algorithm than YOLO. So there was something else we tried called \textbf{Non-Maxima Suppression analysis}.
+    \pagebreak
+    \item \textbf{Non-Maxima Suppression Analysis}
+    \begin{itemize}
+        \item To make the algorithm work in relatively dense and overpopulated areas, we were suggested to adjust the Non-Maxima Suppression (NMS) threshold by Prof. Samit Biswas. 
+        \item So we decided to try various different values of the NMS threshold. A few of the terms that we used in our NMS analysis are:
+        \begin{itemize}
+            \item \textbf{Bad Frame}: This is a frame in which the algorithm fails to correctly identify people and instead gives a horrible big box as the output (as shown above).
+            \item \textbf{Total Frames}: This is the number of total frames in the entire video or the length of the video to be analysed.
+            \item \textbf{Performance Ratio}: This is simply (Number of bad frames)/(Total frames).
+            \item \textbf{Object Threshold}: This is the confidence value ($p_c$) for which a detection is actually considered. Any detection with confidence equal to or above this value is taken into consideration.
+        \end{itemize}
+        \item From this it was clear that the threshold value for which the \textit{Performance Ratio} is the lowest would be the suitable and desired value. We also tinkered with the Object Threshold to get the best possible outcome. The script that we wrote for this was:
+        \lstinputlisting[caption=NMS Analysis for \textit{"shibuya\_100frames.mp4"}, label=lst:NMS]{python scripts/NMS Analysis.py}
+        \pagebreak
+        \item After running the test for a number of threshold values, we got this graph:
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=\linewidth]{Pictures/NMS vs Performance_cropped.png} 
+            \caption{NMS vs. Performance Ratio}
+            \label{fig:NMSvsPerf}
+        \end{figure}
+        \item From this, it is visible that the algorithm gives the best results for NMS threshold around 0.010 to 0.014 and for the object threshold greater than 0.9.
+        \item Of course, this is not ideal since \textbf{it will ignore most of the detections}.
+        \item So we found a sweet spot at NMS threshold as 0.012 and object threshold as 0.75.
+        \item It should be noted that this analysis will be different for different camera feeds.
+    \end{itemize}
+\end{enumerate}
+
+\pagebreak
+
+\section{HENCEFORTH}
+
+While keeping the limitations in mind, this program does serve well as a starting point for an automated social distancing checker. The tedious process that needed to be done manually can now be done by a software. This is undoubtedly music to the ears of any software developer and enthusiast.
+
+With that being said, here is how we can improve the \textit{checker}:
+
+\begin{enumerate}
+    \item We can make the entire thing command line based so that an average consumer will not have to dig around the code to calibrate the algorithm to his or her needs.
+    \item We can (and will) train our own model of YOLO that will only be used to detect people. This can tremendously increase the speed and bring down the processing power requirements
+    \item We can add a help panel for first time users.
+\end{enumerate}
+
+\renewcommand{\refname}{REFERENCES}
+\bibliographystyle{ieeetr}
+\bibliography{mp}
+
+
+\end{document}

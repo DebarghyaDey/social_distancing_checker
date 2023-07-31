@@ -1,2 +1,2 @@
-# social_distancing_checker
-Mini-project (2nd year) - social distancing checker (reorganised).
+# Mini Project
+ Corona Virus Distance Tracker
